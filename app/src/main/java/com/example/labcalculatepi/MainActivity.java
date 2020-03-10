@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
@@ -12,11 +14,10 @@ import java.util.TimerTask;
 
 
 
-public class MainActivity extends AppCompatActivity implements CalculatePi.MyListener {
+public class MainActivity extends AppCompatActivity implements CalculatePi.MyListener, View.OnClickListener {
 
     Timer timer;
     CalculatePi pi = new CalculatePi();
-
 
 
 
@@ -25,9 +26,14 @@ public class MainActivity extends AppCompatActivity implements CalculatePi.MyLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         pi.setKuuntelija(this);
+        Button button = (Button) findViewById(R.id.button);
 
+
+
+
+    }
+    public void laske(View view){
         sekunti(10);
-        //laske();
     }
 
     public void sekunti(int seconds){
@@ -48,6 +54,11 @@ public class MainActivity extends AppCompatActivity implements CalculatePi.MyLis
 
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     class ThreadTimerTask extends TimerTask {
